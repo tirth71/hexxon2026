@@ -329,58 +329,223 @@ const Index = () => {
         </div>
       </section> */}
 
-      {/* Why Choose Us */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-14"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-primary font-semibold uppercase tracking-wider text-sm">
-              Our Advantages
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mt-2">
-              Why Choose <span className="text-primary">HexxonGlobal</span>
-            </h2>
-            <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-              We combine quality, reliability, and global reach to deliver the best agricultural products.
-            </p>
-          </motion.div>
+{/* Why Choose Us */}
+<section className="py-20 bg-background overflow-hidden">
+  <div className="container mx-auto px-4">
 
-          <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
-            {[
-              { icon: Shield, title: "Certified Quality", desc: "APEDA, FSSAI, ISO certified products meeting international food safety standards.", num: "01" },
-              { icon: Truck, title: "Global Logistics", desc: "Seamless shipping to 30+ countries with temperature-controlled delivery.", num: "02" },
-              { icon: Award, title: "Premium Grade", desc: "Only the finest grade products from India's top agricultural regions.", num: "03" },
-              { icon: Globe, title: "Worldwide Reach", desc: "Serving importers, distributors, and retailers across 5 continents.", num: "04" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                className="flex items-start gap-5 bg-muted/40 border border-border rounded-2xl p-6 hover:border-primary/40 hover:bg-muted transition-all duration-300 group"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <span className="text-4xl font-extrabold text-primary/15 leading-none select-none pt-1 min-w-[3rem]">
-                  {item.num}
-                </span>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <item.icon className="w-4 h-4 text-primary-foreground" />
-                    </div>
-                    <h3 className="text-base font-bold text-foreground">{item.title}</h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+    {/* Header */}
+    <motion.div
+      className="text-center mb-14"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
+      <span className="text-primary font-semibold uppercase tracking-wider text-sm">
+        Our Advantages
+      </span>
+      <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mt-2">
+        Why Choose <span className="text-primary">HexxonGlobal</span>
+      </h2>
+      <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
+        Quality, reliability and global reach in every shipment we deliver worldwide.
+      </p>
+    </motion.div>
+
+    {/* Grid wrapper with side decorations */}
+    <div className="relative max-w-4xl mx-auto">
+
+      {/* LEFT decoration */}
+      <div className="hidden lg:flex absolute -left-40 top-0 bottom-0 w-36 flex-col justify-around py-8 pointer-events-none select-none">
+        {[
+          { value: "2+", label: "Years" },
+          { value: "50+", label: "Team" },
+          { value: "4", label: "Certs" },
+        ].map((s) => (
+          <div key={s.label} className="text-center opacity-[0.12]">
+            <p className="text-4xl font-extrabold text-primary leading-none">{s.value}</p>
+            <p className="text-xs uppercase tracking-widest text-foreground mt-1">{s.label}</p>
           </div>
-        </div>
-      </section>
+        ))}
+        {/* Vertical dashed line */}
+        <div className="absolute right-0 top-8 bottom-8 w-px border-r border-dashed border-primary/20" />
+      </div>
+
+      {/* RIGHT decoration */}
+      <div className="hidden lg:flex absolute -right-40 top-0 bottom-0 w-36 flex-col justify-around py-8 pointer-events-none select-none">
+        {[
+          { value: "30+", label: "Countries" },
+          { value: "170+", label: "Clients" },
+          { value: "1000MT+", label: "Annual" },
+        ].map((s) => (
+          <div key={s.label} className="text-center opacity-[0.12]">
+            <p className="text-4xl font-extrabold text-primary leading-none">{s.value}</p>
+            <p className="text-xs uppercase tracking-widest text-foreground mt-1">{s.label}</p>
+          </div>
+        ))}
+        {/* Vertical dashed line */}
+        <div className="absolute left-0 top-8 bottom-8 w-px border-l border-dashed border-primary/20" />
+      </div>
+
+      {/* Faint background grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle, var(--color-primary, #3B6D11) 1px, transparent 1px)`,
+          backgroundSize: "28px 28px",
+        }}
+      />
+
+      {/* 2×2 Masonry Grid */}
+      <div className="grid md:grid-cols-2 gap-5 relative z-10">
+
+        {/* Card 01 — Gradient highlight */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0 }}
+          className="rounded-2xl p-6 flex flex-col justify-between"
+          style={{ background: "linear-gradient(135deg, #2d5a0e, #4a8c1c)" }}
+        >
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/15">
+                <Shield className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xs font-semibold tracking-widest text-white/50">01</span>
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">
+              Certified Quality You Can Trust
+            </h3>
+            <p className="text-sm text-white/65 leading-relaxed">
+              Every product backed by world-class certifications ensuring safety
+              and compliance in all destination markets.
+            </p>
+            <ul className="mt-4 flex flex-col gap-2">
+              {[
+                "APEDA Certified Exporter",
+                "ISO 22000 Food Safety",
+                "FSSAI Licensed & Approved",
+                "GlobalGAP Compliant",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2 text-sm text-white/75">
+                  <CheckCircle className="w-4 h-4 text-green-300 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/15">
+            <div>
+              <p className="text-2xl font-extrabold text-green-200">100%</p>
+              <p className="text-xs text-white/40 uppercase tracking-widest mt-0.5">Quality Checked</p>
+            </div>
+            <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center">
+              <CheckCircle className="w-4 h-4 text-green-300" />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card 02 */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="rounded-2xl p-6 border border-border bg-background flex flex-col justify-between hover:border-primary/40 hover:shadow-md transition-all"
+        >
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Truck className="w-5 h-5 text-primary" />
+              </div>
+              <span className="text-xs font-semibold tracking-widest text-primary/50">02</span>
+            </div>
+            <h3 className="text-base font-bold text-foreground mb-2">Global Logistics Network</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Temperature-controlled shipping with real-time tracking, flexible
+              Incoterms, and dedicated freight partners across all major ports worldwide.
+            </p>
+          </div>
+          <div className="flex items-center justify-between mt-6 pt-4 border-t border-border">
+            <div>
+              <p className="text-2xl font-extrabold text-primary">30+</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mt-0.5">Export Countries</p>
+            </div>
+            <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Globe className="w-4 h-4 text-primary" />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card 03 */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="rounded-2xl p-6 border border-border bg-background flex flex-col justify-between hover:border-primary/40 hover:shadow-md transition-all"
+        >
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Award className="w-5 h-5 text-primary" />
+              </div>
+              <span className="text-xs font-semibold tracking-widest text-primary/50">03</span>
+            </div>
+            <h3 className="text-base font-bold text-foreground mb-2">Premium Grade Produce</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Sourced directly from certified farms across India's finest
+              agricultural regions — rigorous grading ensures only the best reaches your port.
+            </p>
+          </div>
+          <div className="flex items-center justify-between mt-6 pt-4 border-t border-border">
+            <div>
+              <p className="text-2xl font-extrabold text-primary">500+</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mt-0.5">Products</p>
+            </div>
+            <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Package className="w-4 h-4 text-primary" />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card 04 */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="rounded-2xl p-6 border border-border bg-background flex flex-col justify-between hover:border-primary/40 hover:shadow-md transition-all"
+        >
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Users className="w-5 h-5 text-primary" />
+              </div>
+              <span className="text-xs font-semibold tracking-widest text-primary/50">04</span>
+            </div>
+            <h3 className="text-base font-bold text-foreground mb-2">Dedicated Client Support</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              50+ professionals across 5 offices providing end-to-end support —
+              from sourcing and documentation to delivery and after-sales service.
+            </p>
+          </div>
+          <div className="flex items-center justify-between mt-6 pt-4 border-t border-border">
+            <div>
+              <p className="text-2xl font-extrabold text-primary">170+</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mt-0.5">Happy Clients</p>
+            </div>
+            <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Users className="w-4 h-4 text-primary" />
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Global Trade Leader */}
       <section className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-orange-50">
