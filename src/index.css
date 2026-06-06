@@ -1,0 +1,577 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+    filter: brightness(0.9);
+  }
+  50% {
+    filter: brightness(1.4);
+  }
+  100% {
+    background-position: -200% center;
+    filter: brightness(0.9);
+  }
+}
+
+.animate-shine {
+  animation: shine 3.5s ease-in-out infinite;
+}
+
+html {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+     /* --primary: 142 72% 29%; */
+    --primary: 142 64% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 140 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* --accent: 142 72% 29%; */
+    --accent: 142 64% 24%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    /* --ring: 142 72% 29%; */
+    --ring: 142 64% 24%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --green-50: 138 76% 97%;
+    --green-100: 141 84% 93%;
+    /* --green-500: 142 71% 45%;
+    --green-600: 142 72% 29%;
+    --green-700: 142 64% 24%; */
+    --green-500: 142 60% 35%;
+--green-600: 142 64% 24%;
+--green-700: 142 70% 20%;
+
+    --navy-50: 214 32% 96%;
+    --navy-100: 214 32% 91%;
+    --navy-800: 222 47% 11%;
+    --navy-900: 222 47% 8%;
+
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.2;
+
+    --shadow-soft: 0 4px 20px -2px hsl(142 72% 29% / 0.08);
+    --shadow-card: 0 8px 30px -4px hsl(222 47% 11% / 0.08);
+    --shadow-elevated: 0 20px 60px -12px hsl(222 47% 11% / 0.15);
+
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 142 72% 29%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 47% 16%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 222 47% 16%;
+    --sidebar-ring: 142 72% 29%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-lg;
+  }
+
+  /* .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--green-500)));
+  } */
+
+  .gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(142, 47%, 22%));
+}
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(222 47% 16%) 50%, hsl(var(--primary) / 0.3) 100%);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--green-500)));
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Google Translate Widget Styling */
+.goog-te-banner-frame,
+.skiptranslate > iframe,
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.translate-widget .goog-te-gadget {
+  font-size: 0 !important;
+  color: transparent !important;
+  margin: 0 !important;
+}
+
+.translate-widget .goog-te-gadget > span,
+.translate-widget .goog-te-gadget > a {
+  display: none !important;
+}
+
+.translate-widget .goog-te-gadget .goog-te-combo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  border: 1.5px solid hsl(var(--border));
+  border-radius: 0.625rem;
+  padding: 0.375rem 0.625rem;
+  padding-right: 1.5rem;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  max-width: 150px;
+  box-shadow: 0 1px 3px 0 hsl(var(--foreground) / 0.04);
+}
+
+
+
+.translate-widget .goog-te-gadget .goog-te-combo:hover {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 2px 8px -2px hsl(var(--primary) / 0.15);
+}
+
+.translate-widget .goog-te-gadget .goog-te-combo:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.12);
+}
+
+/* Mobile translate widget */
+@media (max-width: 767px) {
+  .translate-widget .goog-te-gadget .goog-te-combo {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem 0.75rem;
+    padding-right: 1.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+
+
+/* =========================
+   GOOGLE TRANSLATE CLEAN UI
+========================= */
+
+/* Hide Google top bar */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+/* Remove big language popup */
+/* .goog-te-menu-frame {
+  display: none !important;
+}
+
+.goog-te-menu2 {
+  display: none !important;
+} */
+
+
+/* Hide top banner only */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.translate-widget .goog-te-combo {
+  cursor: pointer;
+}
+
+/* Clean widget */
+.translate-widget .goog-te-gadget {
+  font-size: 0 !important;
+  margin: 0;
+}
+
+/* Hide "Powered by Google" */
+.translate-widget .goog-te-gadget span {
+  display: none !important;
+}
+
+/* Dropdown styling */
+.translate-widget .goog-te-combo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  padding-right: 16px;
+}
+
+/* Custom arrow */
+.translate-widget {
+  position: relative;
+}
+
+.translate-widget::after {
+  content: "▼";
+  font-size: 10px;
+  position: absolute;
+  right: 8px;
+  pointer-events: none;
+  color: #64748b;
+}
+
+/* Hover effect */
+.translate-widget:hover {
+  border-color: #16a34a;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .translate-widget .goog-te-combo {
+    width: 100%;
+  }
+}
+
+
+/* =========================
+   GOOGLE TRANSLATE FINAL FIX
+========================= */
+
+/* Hide top bar */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+/* Fix dropdown visibility */
+.goog-te-menu-frame {
+  z-index: 999999 !important;
+  position: fixed !important;
+}
+
+/* Prevent clipping */
+header,
+.translate-widget {
+  overflow: visible !important;
+}
+
+/* Clean widget */
+.translate-widget .goog-te-gadget {
+  font-size: 0 !important;
+}
+
+/* Hide Google branding */
+.translate-widget .goog-te-gadget span {
+  display: none !important;
+}
+
+/* Style dropdown */
+.translate-widget select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+  cursor: pointer;
+} 
+
+
+/* 🔥 FORCE NORMAL DROPDOWN */
+.goog-te-gadget {
+  font-size: 0 !important;
+}
+
+.goog-te-combo {
+  display: block !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* ❌ HIDE GOOGLE PANEL TRIGGER */
+.goog-te-menu-frame {
+  pointer-events: none !important;
+}
+
+/* Ensure native select works */
+.translate-widget select {
+  appearance: auto !important;
+  -webkit-appearance: menulist !important;
+}
+
+
+/* Language Dropdown */
+.lang-dropdown {
+  position: relative;
+}
+
+.lang-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lang-button:hover {
+  border-color: #16a34a;
+}
+
+/* Dropdown panel */
+.lang-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 220px;
+  max-height: 300px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 8px;
+  z-index: 9999;
+}
+
+/* Search */
+.lang-search {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-bottom: 6px;
+}
+
+/* Item */
+.lang-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.lang-item:hover {
+  background: #f3f4f6;
+}
+
+/* Flag */
+.lang-flag {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+
+/* Remove top banner */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+/* Clean container */
+.custom-translate {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Dropdown styling */
+.custom-translate .goog-te-combo {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+/* Remove extra google text */
+.custom-translate span,
+.custom-translate a {
+  display: none !important;
+}
+
+/* Remove "Powered by" inside widget */
+.goog-logo-link {
+  display: none !important;
+}
+
+
+/* Hide Google top bar */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+/* Main container */
+.translate-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Dropdown style (LIKE TRIGOL) */
+.google-style .goog-te-combo {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  padding: 4px 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+/* Hover */
+.google-style .goog-te-combo:hover {
+  border-color: #9ca3af;
+}
+
+/* Remove extra google text */
+.google-style span,
+.google-style a {
+  display: none !important;
+}
+
+/* Remove default logo */
+.goog-logo-link {
+  display: none !important;
+}
+
+/* Powered by section */
+.google-powered {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+/* Google logo */
+.google-logo {
+  height: 12px;
+}
+
+/* Hide top bar */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+/* Clean dropdown (Trigol style) */
+.goog-te-combo {
+  border: 1px solid #d1d5db !important;
+  background: #fff !important;
+  padding: 4px 8px !important;
+  font-size: 13px !important;
+  border-radius: 6px !important;
+  outline: none !important;
+  cursor: pointer !important;
+  min-width: 140px;
+}
+
+/* Remove unwanted text */
+.goog-te-gadget span,
+.goog-te-gadget a {
+  display: none !important;
+}
+
+/* Remove google logo from dropdown */
+.goog-logo-link {
+  display: none !important;
+}
+
+
+
+@keyframes certScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-cert-scroll {
+  animation: certScroll 28s linear infinite;
+}
+
+.animate-cert-scroll:hover {
+  animation-play-state: paused;
+}
