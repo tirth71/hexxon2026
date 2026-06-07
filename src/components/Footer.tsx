@@ -159,8 +159,7 @@ const Footer = () => (
     <li className="flex items-start gap-3">
       <MapPin className="w-4 h-4 text-primary mt-1" />
       <span>
-        Yogichowk, Surat,
-        Gujarat 395010, India
+       21, Sukh vishwa Residency-1, Kholvad, Gujarat-394190 , India
       </span>
     </li>
 

@@ -5,11 +5,11 @@ import { ArrowRight, Shield, Truck, Award, Star, ChevronLeft, ChevronRight, Leaf
 import { Button } from "@/components/ui/button";
 import QuoteFormDialog from "@/components/QuoteFormDialog";
 import { categories } from "@/data/products";
-import heroBg from "@/assets/ChatGPT Image Jun 5, 2026, 04_00_11 PM.png";
-import globalTrade from "@/assets/global-trade-D7MRtin6.jpg";
-import processImage from "@/assets/quality-control-CSJAzth2.jpg";
+import heroBg from "@/assets/ChatGPT Image Jun 5, 2026, 04_03_50 PM.png";
+import globalTrade from "@/assets/gt.jpeg";
+import processImage from "@/assets/istockphoto-2104492029-612x612.jpg";
 import { ShieldCheck, Ship, Globe, CheckCircle } from "lucide-react";
-import global2 from "@/assets/ChatGPT Image Jun 5, 2026, 04_03_50 PM.png";
+import global2 from "@/assets/ChatGPT Image Jun 5, 2026, 04_00_11 PM.png";
 import iso from "@/assets/ISO.png";
 import fssai from "@/assets/FSSAI_logo.png";
 import apeda from "@/assets/apeda.png";

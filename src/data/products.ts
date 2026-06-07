@@ -1,10 +1,10 @@
-import catVegetables from "@/assets/cat-vegetables.webp";
-import catFruits from "@/assets/cat-fruits.webp";
+import catVegetables from "@/assets/cat-veg.webp";
+import catFruits from "@/assets/cat-fruit.webp";
 import catSpices from "@/assets/cat-spices.webp";
 import catRice from "@/assets/cat-rice.webp";
-import catOilseeds from "@/assets/cat-oilseeds.webp";
-import catGrains from "@/assets/cat-grains.webp";
-import catOils from "@/assets/cat-oils.webp";
+import catOilseeds from "@/assets/cat-oilsseed.webp";
+import catGrains from "@/assets/cat-seed.webp";
+import catOils from "@/assets/cat-oil.webp";
 
 import freshOnions from "@/assets/productimage/fresh-onions.webp";
 import tomatoes from "@/assets/productimage/tomato.webp";

@@ -44,8 +44,8 @@ const Contact = () => {
 
     emailjs
       .send(
-        "service_pid1a6q",
-        "template_nh5a1i6",
+        "service_vklbdlr",
+        "template_qwzb8h3",
         {
           name: form.name,
           company: form.company,
@@ -56,7 +56,7 @@ const Contact = () => {
           inquiry: form.inquiry,
           message: form.message,
         },
-        "h4poJxYk3BqH5S9a_"
+        "i-xxdlnyTIQRcVjyU"
       )
       .then(() => {
         toast.success("Inquiry sent successfully!");
@@ -416,7 +416,7 @@ const Contact = () => {
               </div>
               <div className="space-y-5">
                 {[
-                  { icon: MapPin, label: "Address", value: "Yogichowk , Surat, Gujarat 395010, India" },
+                  { icon: MapPin, label: "Address", value: "21, Sukh vishwa Residency-1, Kholvad, Gujarat-394190 , India" },
                   { icon: Phone, label: "Phone", value: "+91 81285 42365" },
                   { icon: Mail, label: "Email", value: "hexxonglobal@gmail.com" },
                   { icon: Clock, label: "Office Hours", value: "Mon - Sat: 9:00 AM – 6:00 PM IST" },
@@ -514,15 +514,14 @@ const Contact = () => {
 
               {/* Map */}
               <div className="rounded-2xl overflow-hidden shadow-lg">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.4290583498455!2d72.8885548!3d21.214828099999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f7a3077c639%3A0xb2a14f3ba5850acb!2sYogi%20Chowk!5e0!3m2!1sen!2sin!4v1774609597760!5m2!1sen!2sin"
-                  width="100%"
-                  height="400"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
+                  <iframe
+                    src="https://maps.google.com/maps?q=Sukh%20Vishwa%20Residency%202,%20Kamrej,%20Surat&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    className="w-full h-[500px]"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    allowFullScreen
+                  />
+                  </div>
 
             </div>
           </div>

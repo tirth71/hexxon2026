@@ -1,48 +1,125 @@
-/* Full screen center */
+/* Full Screen Loader */
 .loader-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+/* Center Content */
+.loader-content {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  z-index: 9999;
 }
 
-/* Animated text loader */
-.loader {
-  font-weight: bold;
-  font-family: monospace;
-  font-size: 28px;
-  background: radial-gradient(circle closest-side, #000 94%, #0000) right / calc(200% - 1em) 100%;
-  animation: l24 1s infinite alternate linear;
+/* Logo */
+.loader-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 18px;
+  animation: floatLogo 2s ease-in-out infinite;
 }
 
-/* Change text here */
-.loader::before {
-  content: "HexxonGlobal...";
-  line-height: 1em;
-  color: transparent;
-  background: inherit;
-  background-image: radial-gradient(circle closest-side, #16a34a 94%, #000);
-  -webkit-background-clip: text;
-  background-clip: text;
+/* Company Name */
+.loader-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #166534;
+  margin: 0;
+  letter-spacing: 1px;
+  animation: fadePulse 2s ease-in-out infinite;
 }
 
-/* Animation */
-@keyframes l24 {
+/* Subtitle */
+.loader-subtitle {
+  margin-top: 8px;
+  color: #64748b;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 260px;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  margin-top: 24px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    #166534,
+    #22c55e
+  );
+  border-radius: 999px;
+  animation: loading 1.8s ease-in-out infinite;
+}
+
+/* Animations */
+
+@keyframes loading {
+  0% {
+    transform: translateX(-120%);
+  }
+
   100% {
-    background-position: left;
+    transform: translateX(350%);
   }
 }
 
-/* Optional subtitle */
-.loader-text {
-  font-size: 14px;
-  color: #666;
+@keyframes fadePulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+
+  100% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes floatLogo {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .loader-logo {
+    width: 90px;
+  }
+
+  .loader-title {
+    font-size: 30px;
+  }
+
+  .progress-bar {
+    width: 200px;
+  }
 }
