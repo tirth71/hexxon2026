@@ -371,20 +371,20 @@ const ProductDetail = () => {
                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                   style={{ width: "200%" }}
                 >
-                  {Array.from({ length: 16 }).map((_, i) => (
+                  {Array.from({ length: 36 }).map((_, i) => (
                     <motion.span
                       key={i}
                       className="text-blue-300 text-base"
                       animate={{ y: [0, -2, 0] }}
                       transition={{ duration: 1, repeat: Infinity, delay: i * 0.1 }}
                     >
-                      〜
+                      🚢
                     </motion.span>
                   ))}
                 </motion.div>
 
                 {/* Ship */}
-                <motion.div
+                {/* <motion.div
                   className="absolute text-2xl"
                   style={{ top: "50%", transform: "translateY(-50%)" }}
                   initial={{ x: -40 }}
@@ -392,10 +392,10 @@ const ProductDetail = () => {
                   transition={{ duration: 5, repeat: Infinity, ease: "linear", repeatDelay: 0.5 }}
                 >
                   🚢
-                </motion.div>
+                </motion.div> */}
 
                 {/* Port flag on right */}
-                <div className="absolute right-2 top-1/2 -translate-y-1/2 text-lg">🏁</div>
+                {/* <div className="absolute right-2 top-1/2 -translate-y-1/2 text-lg">🏁</div> */}
               </div>
 
               {/* Mini stats with count up */}
