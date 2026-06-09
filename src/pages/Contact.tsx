@@ -513,15 +513,18 @@ const Contact = () => {
               </div>
 
               {/* Map */}
-              <div className="rounded-2xl overflow-hidden shadow-lg">
-                  <iframe
-                    src="https://maps.google.com/maps?q=Sukh%20Vishwa%20Residency%202,%20Kamrej,%20Surat&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    className="w-full h-[500px]"
-                    style={{ border: 0 }}
-                    loading="lazy"
-                    allowFullScreen
-                  />
-                  </div>
+             <div className="rounded-2xl overflow-hidden shadow-lg">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3717.859669744329!2d72.9440625!3d21.2770217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0470007ab8e57%3A0xe16f3a5d1a5393a6!2sVishva%20Residency!5e0!3m2!1sen!2sin!4v1780979830112!5m2!1sen!2sin"
+    width="100%"
+    height="450"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    className="w-full"
+  />
+</div>
 
             </div>
           </div>
