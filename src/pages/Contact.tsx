@@ -604,7 +604,7 @@ const Contact = () => {
               </div>
               <div className="space-y-5">
                 {[
-                  { icon: MapPin, label: "Address", value: "21, Sukh vishwa Residency-1, Kholvad, Gujarat-394190 , India" },
+                  { icon: MapPin, label: "Address", value: "21, Sukh vishwa Residency-1, Kholvad, Surat, Gujarat-394190 , India" },
                   { icon: Phone, label: "Phone", value: "+91 81285 42365" },
                   { icon: Mail, label: "Email", value: "hexxonglobal@gmail.com" },
                   { icon: Clock, label: "Office Hours", value: "Mon - Sat: 9:00 AM – 6:00 PM IST" },
