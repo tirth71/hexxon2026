@@ -107,15 +107,203 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen pt-16 overflow-x-hidden">
-      <div className="bg-secondary text-secondary-foreground py-16">
-        <div className="container mx-auto px-4">
-          <motion.h1 className="text-3xl md:text-4xl font-extrabold" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-            Contact <span className="text-primary">Us</span>
-          </motion.h1>
-          <p className="text-secondary-foreground/70 mt-2">We'd love to hear from you. Get in touch for inquiries and quotes.</p>
-        </div>
+    {/* Page Header */}
+<div className="relative bg-secondary text-secondary-foreground py-16 overflow-hidden">
+
+  {/* Background blobs */}
+  <div className="absolute inset-0 opacity-5 pointer-events-none">
+    <div className="absolute top-0 left-0 w-72 h-72 bg-primary rounded-full blur-3xl" />
+    <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl" />
+  </div>
+
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="grid md:grid-cols-2 gap-6 items-center">
+
+      {/* Left: original text — untouched */}
+      <div>
+        <motion.h1
+          className="text-3xl md:text-4xl font-extrabold"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          Contact <span className="text-primary">Us</span>
+        </motion.h1>
+        <motion.p
+          className="text-secondary-foreground/70 mt-2"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+        >
+          We'd love to hear from you. Get in touch for inquiries and quotes.
+        </motion.p>
+
+        {/* Contact channel pills */}
+        <motion.div
+          className="flex flex-wrap gap-2 mt-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          {[
+            { emoji: "📧", label: "Email" },
+            { emoji: "📞", label: "Call" },
+            { emoji: "💬", label: "WhatsApp" },
+            { emoji: "📍", label: "Visit Us" },
+          ].map((pill, i) => (
+            <motion.span
+              key={pill.label}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs text-secondary-foreground/80 backdrop-blur-sm"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.35 + i * 0.08, type: "spring", stiffness: 300 }}
+            >
+              {pill.emoji} {pill.label}
+            </motion.span>
+          ))}
+        </motion.div>
       </div>
 
+      {/* Right: Globe + signal animation */}
+      <motion.div
+        className="hidden md:flex items-center justify-center relative h-32"
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <svg
+          viewBox="0 0 440 128"
+          className="w-full max-w-md ml-auto"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* ── Globe ── */}
+          {/* Outer ring */}
+          <motion.circle
+            cx="220" cy="64" r="50"
+            fill="none" stroke="#3B6D11" strokeWidth="1.5" opacity="0.4"
+            animate={{ rotate: 360 }}
+            style={{ originX: "220px", originY: "64px" }}
+            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+          />
+          {/* Globe body */}
+          <circle cx="220" cy="64" r="42" fill="#0f2a47" opacity="0.7" />
+          <circle cx="220" cy="64" r="42" fill="none" stroke="#3B6D11" strokeWidth="1" opacity="0.6" />
+
+          {/* Latitude lines */}
+          {[-20, 0, 20].map((dy, i) => (
+            <ellipse key={i} cx="220" cy={64 + dy} rx="42" ry="10" fill="none" stroke="#3B6D11" strokeWidth="0.6" opacity="0.3" />
+          ))}
+
+          {/* Longitude lines (vertical curves) */}
+          <path d="M220,22 Q242,64 220,106" fill="none" stroke="#3B6D11" strokeWidth="0.6" opacity="0.3" />
+          <path d="M220,22 Q198,64 220,106" fill="none" stroke="#3B6D11" strokeWidth="0.6" opacity="0.3" />
+          <line x1="220" y1="22" x2="220" y2="106" stroke="#3B6D11" strokeWidth="0.6" opacity="0.3" />
+
+          {/* Continents (simple blobs) */}
+          <ellipse cx="208" cy="52" rx="12" ry="8"  fill="#3B6D11" opacity="0.5" />
+          <ellipse cx="228" cy="60" rx="9"  ry="6"  fill="#3B6D11" opacity="0.45" />
+          <ellipse cx="212" cy="72" rx="7"  ry="5"  fill="#3B6D11" opacity="0.4" />
+          <ellipse cx="234" cy="50" rx="5"  ry="4"  fill="#3B6D11" opacity="0.35" />
+
+          {/* ── Ping rings from globe ── */}
+          {[0, 1, 2].map((i) => (
+            <motion.circle
+              key={i}
+              cx="220" cy="64" r="42"
+              fill="none" stroke="#3B6D11" strokeWidth="1.5" opacity="0"
+              animate={{ r: [42, 80], opacity: [0.5, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut", delay: i * 0.85 }}
+            />
+          ))}
+
+          {/* ── Floating message nodes ── */}
+          {/* Node 1 — Email */}
+          <motion.g
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0 }}
+          >
+            <rect x="18" y="20" width="68" height="28" fill="white" fillOpacity="0.1" stroke="white" strokeOpacity="0.2" strokeWidth="0.8" rx="8" />
+            <text x="52" y="38" textAnchor="middle" fontSize="11" fill="white" opacity="0.85">📧 Email</text>
+            {/* Dashed line to globe */}
+            <line x1="86" y1="34" x2="178" y2="54" stroke="white" strokeWidth="0.8" strokeDasharray="4 3" opacity="0.3" />
+            {/* Moving dot along line */}
+            <motion.circle
+              r="3" fill="#3B6D11" opacity="0.8"
+              animate={{ cx: [86, 178], cy: [34, 54] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "linear", delay: 0.2 }}
+            />
+          </motion.g>
+
+          {/* Node 2 — Call */}
+          <motion.g
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          >
+            <rect x="18" y="76" width="68" height="28" fill="white" fillOpacity="0.1" stroke="white" strokeOpacity="0.2" strokeWidth="0.8" rx="8" />
+            <text x="52" y="94" textAnchor="middle" fontSize="11" fill="white" opacity="0.85">📞 Call</text>
+            <line x1="86" y1="90" x2="178" y2="72" stroke="white" strokeWidth="0.8" strokeDasharray="4 3" opacity="0.3" />
+            <motion.circle
+              r="3" fill="#3B6D11" opacity="0.8"
+              animate={{ cx: [86, 178], cy: [90, 72] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "linear", delay: 1.1 }}
+            />
+          </motion.g>
+
+          {/* Node 3 — WhatsApp */}
+          <motion.g
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: 1.0 }}
+          >
+            <rect x="354" y="20" width="78" height="28" fill="white" fillOpacity="0.1" stroke="white" strokeOpacity="0.2" strokeWidth="0.8" rx="8" />
+            <text x="393" y="38" textAnchor="middle" fontSize="11" fill="white" opacity="0.85">💬 Chat</text>
+            <line x1="354" y1="34" x2="262" y2="54" stroke="white" strokeWidth="0.8" strokeDasharray="4 3" opacity="0.3" />
+            <motion.circle
+              r="3" fill="#3B6D11" opacity="0.8"
+              animate={{ cx: [354, 262], cy: [34, 54] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "linear", delay: 0.7 }}
+            />
+          </motion.g>
+
+          {/* Node 4 — Visit */}
+          <motion.g
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+          >
+            <rect x="354" y="76" width="78" height="28" fill="white" fillOpacity="0.1" stroke="white" strokeOpacity="0.2" strokeWidth="0.8" rx="8" />
+            <text x="393" y="94" textAnchor="middle" fontSize="11" fill="white" opacity="0.85">📍 Visit</text>
+            <line x1="354" y1="90" x2="262" y2="72" stroke="white" strokeWidth="0.8" strokeDasharray="4 3" opacity="0.3" />
+            <motion.circle
+              r="3" fill="#3B6D11" opacity="0.8"
+              animate={{ cx: [354, 262], cy: [90, 72] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "linear", delay: 1.6 }}
+            />
+          </motion.g>
+
+          {/* Response time badge */}
+          <rect x="176" y="4" width="88" height="20" fill="#3B6D11" rx="10" opacity="0.9" />
+          <text x="220" y="17" textAnchor="middle" fontSize="9" fill="white" fontWeight="600">⚡ Reply in 24hrs</text>
+        </svg>
+      </motion.div>
+
+    </div>
+  </div>
+
+  {/* Animated wave divider */}
+  <div className="absolute bottom-0 left-0 right-0 overflow-hidden" style={{ height: "40px" }}>
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <motion.path
+        fill="hsl(var(--background))"
+        animate={{
+          d: [
+            "M0,20 C360,40 720,0 1080,20 C1260,30 1380,10 1440,20 L1440,40 L0,40 Z",
+            "M0,28 C360,8  720,38 1080,15 C1260,5  1380,35 1440,12 L1440,40 L0,40 Z",
+            "M0,20 C360,40 720,0 1080,20 C1260,30 1380,10 1440,20 L1440,40 L0,40 Z",
+          ],
+        }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </svg>
+  </div>
+</div>
 
    <motion.section
       className="py-20 bg-gradient-to-b from-background to-muted/30"
@@ -450,55 +638,6 @@ const Contact = () => {
             </motion.div>
           </div>
 
-
-          {/* <motion.section
-            className="py-16 bg-muted"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          > */}
-            {/* <div className="container mx-auto px-4">
-
-              <div className="bg-background rounded-2xl p-10 md:p-14 text-center max-w-4xl mx-auto shadow-sm"> */}
-
-                {/* Title */}
-                {/* <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                  Need Immediate Assistance?
-                </h2> */}
-
-                {/* Description */}
-                {/* <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-                  For urgent inquiries or time-sensitive requirements, our team is available
-                  24/7 to provide immediate support and guidance.
-                </p> */}
-
-                {/* Buttons */}
-                {/* <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8"> */}
-
-                  {/* Call Button */}
-                  {/* <a
-                    href="tel:+918128542365"
-                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition"
-                  >
-                    <Phone className="w-5 h-5" />
-                    Call Now: +91 93164 90925
-                  </a> */}
-
-                  {/* Email Button */}
-                  {/* <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=info@akbariexim.com"
-                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-primary text-primary font-medium hover:bg-primary/10 transition"
-                  >
-                    <Mail className="w-5 h-5" />
-                    Urgent Email
-                  </a>
-
-                </div>
-
-              </div>
-
-            </div>
-          </motion.section> */}
 
 
 

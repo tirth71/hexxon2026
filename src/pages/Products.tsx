@@ -25,20 +25,159 @@ const Products = () => {
   return (
     <div className="min-h-screen pt-16 bg-muted">
       {/* Page Header */}
-      <div className="bg-secondary text-secondary-foreground py-12">
-        <div className="container mx-auto px-4">
-          <motion.h1
-            className="text-3xl md:text-4xl font-extrabold"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            Our <span className="text-primary">Products</span>
-          </motion.h1>
-          <p className="text-secondary-foreground/70 mt-2 max-w-xl">
-            Explore our comprehensive range of premium agricultural products sourced from India's finest regions.
-          </p>
-        </div>
+<div className="relative bg-secondary text-secondary-foreground py-12 overflow-hidden">
+
+  {/* Background blobs */}
+  <div className="absolute inset-0 opacity-5 pointer-events-none">
+    <div className="absolute top-0 left-0 w-72 h-72 bg-primary rounded-full blur-3xl" />
+    <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl" />
+  </div>
+
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="grid md:grid-cols-2 gap-6 items-center">
+
+      {/* Left: original text — untouched */}
+      <div>
+        <motion.h1
+          className="text-3xl md:text-4xl font-extrabold"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          Our <span className="text-primary">Products</span>
+        </motion.h1>
+        <motion.p
+          className="text-secondary-foreground/70 mt-2 max-w-xl"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+        >
+          Explore our comprehensive range of premium agricultural products sourced from India's finest regions.
+        </motion.p>
+
+        {/* Category pills */}
+        <motion.div
+          className="flex flex-wrap gap-2 mt-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          
+        </motion.div>
       </div>
+
+      {/* Right: Floating produce + crate animation */}
+      <motion.div
+        className="hidden md:block relative h-28"
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <svg
+          viewBox="0 0 440 112"
+          className="w-full max-w-md ml-auto"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Conveyor belt base */}
+          {/* <rect x="10" y="82" width="420" height="12" fill="#1e3a1e" rx="6" opacity="0.6" /> */}
+          {/* Belt lines moving */}
+          {/* <motion.g
+            animate={{ x: [0, -40] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+          >
+            {[0, 40, 80, 120, 160, 200, 240, 280, 320, 360, 400, 440].map((x) => (
+              <rect key={x} x={x + 4} y="84" width="28" height="8" fill="#2a5a2a" rx="2" opacity="0.5" />
+            ))}
+          </motion.g> */}
+
+          {/* Crate 1 — Vegetables */}
+          {/* <motion.g
+            animate={{ x: [360, -80] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 0 }}
+          >
+            <rect x="0" y="60" width="52" height="24" fill="#5a3a1a" rx="4" />
+            <line x1="0"  y1="72" x2="52" y2="72" stroke="#7a5a3a" strokeWidth="1" />
+            <line x1="17" y1="60" x2="17" y2="84" stroke="#7a5a3a" strokeWidth="1" />
+            <line x1="35" y1="60" x2="35" y2="84" stroke="#7a5a3a" strokeWidth="1" />
+            <text x="26" y="75" textAnchor="middle" fontSize="11" fill="#d4a96a">🥦</text>
+          </motion.g> */}
+
+          {/* Crate 2 — Fruits (offset) */}
+          {/* <motion.g
+            animate={{ x: [500, -80] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "linear", delay: 2.3 }}
+          >
+            <rect x="0" y="60" width="52" height="24" fill="#5a3a1a" rx="4" />
+            <line x1="0"  y1="72" x2="52" y2="72" stroke="#7a5a3a" strokeWidth="1" />
+            <line x1="17" y1="60" x2="17" y2="84" stroke="#7a5a3a" strokeWidth="1" />
+            <line x1="35" y1="60" x2="35" y2="84" stroke="#7a5a3a" strokeWidth="1" />
+            <text x="26" y="75" textAnchor="middle" fontSize="11" fill="#d4a96a">🌶️</text>
+          </motion.g> */}
+
+          {/* Crate 3 — Grains */}
+          {/* <motion.g
+            animate={{ x: [640, -80] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "linear", delay: 4.6 }}
+          >
+            <rect x="0" y="60" width="52" height="24" fill="#5a3a1a" rx="4" />
+            <line x1="0"  y1="72" x2="52" y2="72" stroke="#7a5a3a" strokeWidth="1" />
+            <line x1="17" y1="60" x2="17" y2="84" stroke="#7a5a3a" strokeWidth="1" />
+            <line x1="35" y1="60" x2="35" y2="84" stroke="#7a5a3a" strokeWidth="1" />
+            <text x="26" y="75" textAnchor="middle" fontSize="11" fill="#d4a96a">🌾</text>
+          </motion.g> */}
+
+          {/* Floating produce items above belt */}
+          {/* {[
+            { emoji: "🍅", x: 60,  delay: 0,    dur: 2.2 },
+            { emoji: "🧅", x: 130, delay: 0.4,  dur: 2.6 },
+            { emoji: "🥕", x: 200, delay: 0.8,  dur: 2.0 },
+            { emoji: "🌿", x: 270, delay: 0.3,  dur: 2.8 },
+            { emoji: "🍋", x: 340, delay: 0.6,  dur: 2.4 },
+            { emoji: "🫚", x: 400, delay: 1.0,  dur: 2.1 },
+          ].map((item) => (
+            <motion.text
+              key={item.x}
+              x={item.x}
+              y="46"
+              textAnchor="middle"
+              fontSize="20"
+              animate={{ y: [46, 38, 46] }}
+              transition={{ duration: item.dur, repeat: Infinity, ease: "easeInOut", delay: item.delay }}
+            >
+              {item.emoji}
+            </motion.text>
+          ))} */}
+
+          {/* Certified badge on right */}
+          {/* <rect x="350" y="4" width="82" height="24" fill="#3B6D11" rx="12" opacity="0.9" />
+          <text x="391" y="20" textAnchor="middle" fontSize="10" fill="white" fontWeight="600">✅ Certified</text> */}
+
+          {/* Export tag on left */}
+          {/* <rect x="8" y="4" width="76" height="24" fill="white" fillOpacity="0.1" rx="12" />
+          <text x="46" y="20" textAnchor="middle" fontSize="10" fill="white" fontWeight="600">🚢 Export</text> */}
+        </svg>
+      </motion.div>
+
+    </div>
+  </div>
+
+  {/* Wave divider into products section */}
+  <div className="absolute bottom-0 left-0 right-0 overflow-hidden" style={{ height: "40px" }}>
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <motion.path
+        fill="hsl(var(--muted))"
+        animate={{
+          d: [
+            "M0,20 C360,40 720,0 1080,20 C1260,30 1380,10 1440,20 L1440,40 L0,40 Z",
+            "M0,28 C360,8  720,38 1080,15 C1260,5  1380,35 1440,12 L1440,40 L0,40 Z",
+            "M0,20 C360,40 720,0 1080,20 C1260,30 1380,10 1440,20 L1440,40 L0,40 Z",
+          ],
+        }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </svg>
+  </div>
+</div>
+
 
       {/* 3-Column Layout */}
       <div className="container mx-auto px-4 py-10">

@@ -317,18 +317,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Counters */}
-      {/* <section className="py-14 bg-background border-y border-border">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <AnimatedCounter end={30} suffix="+" label="Countries Served" />
-            <AnimatedCounter end={170} suffix="+" label="Products Exported" />
-            <AnimatedCounter end={2} suffix="+" label="Years Experience" />
-            <AnimatedCounter end={50} suffix="+" label="Happy Clients" />
-          </div>
-        </div>
-      </section> */}
-
 {/* Why Choose Us */}
 <section className="py-20 bg-background overflow-hidden">
   <div className="container mx-auto px-4">
@@ -631,99 +619,158 @@ const Index = () => {
         </div>
       </section>
 
-      {/* 6-Step Quality Process */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-50 via-white to-orange-50 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#f59e0b15,transparent_40%)]" />
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+     {/* 6-Step Quality Process */}
+<section className="relative py-16 md:py-24 bg-gradient-to-br from-slate-50 via-white to-orange-50 overflow-hidden">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#f59e0b15,transparent_40%)]" />
 
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-              Global Export Workflow
-            </span>
-            <h2 className="mt-6 text-4xl md:text-5xl font-bold text-foreground">
-              Our 6-Step <span className="text-primary"> Quality Process</span>
-            </h2>
-            <p className="mt-5 text-lg text-muted-foreground">
-              Every order follows a strict quality-controlled process to ensure compliance, safety,
-              and seamless global delivery.
-            </p>
-          </div>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+    {/* Header */}
+    <motion.div
+      className="text-center max-w-3xl mx-auto mb-12 md:mb-20"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
+        Global Export Workflow
+      </span>
+      <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
+        Our 6-Step <span className="text-primary"> Quality Process</span>
+      </h2>
+      <p className="mt-4 text-base md:text-lg text-muted-foreground">
+        Every order follows a strict quality-controlled process to ensure compliance, safety,
+        and seamless global delivery.
+      </p>
+    </motion.div>
 
-            <div className="space-y-6">
-              {[
-                { title: "Source & Verify", desc: "Carefully selecting trusted suppliers and certified producers.", icon: Globe },
-                { title: "Inspect & Grade", desc: "Comprehensive quality checks and grading procedures.", icon: CheckCircle },
-                { title: "Process & Package", desc: "Custom packaging and preparation according to buyer requirements.", icon: ShieldCheck },
-                { title: "Document & Certify", desc: "Export documentation, certificates, and compliance approvals.", icon: CheckCircle },
-                { title: "Ship & Track", desc: "Reliable logistics management with shipment tracking.", icon: Ship },
-                { title: "Deliver & Support", desc: "On-time delivery with dedicated post-shipment assistance.", icon: ShieldCheck },
-              ].map((step, index) => {
-                const Icon = step.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group flex gap-5 rounded-3xl bg-white p-6 shadow-lg border border-border hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-                  >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white flex-shrink-0">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-primary font-bold">0{index + 1}</span>
-                        <h3 className="font-bold text-lg">{step.title}</h3>
-                      </div>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+    <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-            <div className="relative">
-              <div className="overflow-hidden rounded-[32px] shadow-2xl">
-                <img
-                  src={processImage}
-                  alt="Global Export Process"
-                  className="w-full h-[720px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              </div>
-
-              <div className="absolute bottom-8 left-8 right-8 rounded-3xl bg-white/95 backdrop-blur-md p-6 shadow-xl">
-                <div className="flex items-center gap-4">
-                  <div className="h-14 w-14 rounded-2xl bg-primary flex items-center justify-center">
-                    <ShieldCheck className="h-7 w-7 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg">ISO 9001:2015 Certified</h4>
-                    <p className="text-sm text-muted-foreground">
-                      International quality management standards followed at every stage.
-                    </p>
-                  </div>
+      {/* LEFT: Steps */}
+      <div className="space-y-4">
+        {[
+          { title: "Source & Verify", desc: "Carefully selecting trusted suppliers and certified producers.", icon: Globe },
+          { title: "Inspect & Grade", desc: "Comprehensive quality checks and grading procedures.", icon: CheckCircle },
+          { title: "Process & Package", desc: "Custom packaging and preparation according to buyer requirements.", icon: ShieldCheck },
+          { title: "Document & Certify", desc: "Export documentation, certificates, and compliance approvals.", icon: CheckCircle },
+          { title: "Ship & Track", desc: "Reliable logistics management with shipment tracking.", icon: Ship },
+          { title: "Deliver & Support", desc: "On-time delivery with dedicated post-shipment assistance.", icon: ShieldCheck },
+        ].map((step, index) => {
+          const Icon = step.icon;
+          return (
+            <motion.div
+              key={index}
+              className="group flex gap-4 md:gap-5 rounded-2xl md:rounded-3xl bg-white p-4 md:p-6 shadow-md border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-default"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.01 }}
+            >
+              <motion.div
+                className="flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-xl md:rounded-2xl bg-primary text-white flex-shrink-0"
+                whileHover={{ rotate: 8, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
+                <Icon className="w-5 h-5 md:w-6 md:h-6" />
+              </motion.div>
+              <div>
+                <div className="flex items-center gap-2 md:gap-3 mb-1.5">
+                  <span className="text-primary font-bold text-sm md:text-base">0{index + 1}</span>
+                  <h3 className="font-bold text-base md:text-lg">{step.title}</h3>
                 </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
               </div>
+            </motion.div>
+          );
+        })}
+      </div>
 
-              <div className="absolute -top-6 -left-6 bg-white rounded-3xl shadow-xl p-5 border">
-                <h4 className="text-3xl font-bold text-primary">30+</h4>
-                <p className="text-sm text-muted-foreground">Countries Served</p>
-              </div>
-
-              <div className="absolute top-10 -right-6 bg-primary text-white rounded-3xl shadow-xl p-5">
-                <h4 className="text-3xl font-bold">100%</h4>
-                <p className="text-sm opacity-90">Quality Checked</p>
-              </div>
-
-              <div className="absolute bottom-40 -right-6 bg-white rounded-3xl shadow-xl p-5 border">
-                <h4 className="text-3xl font-bold text-primary">50+</h4>
-                <p className="text-sm text-muted-foreground">Shipments Delivered</p>
-              </div>
-            </div>
-
-          </div>
+      {/* RIGHT: Image + Badges */}
+      <motion.div
+        className="relative mt-8 lg:mt-0"
+        initial={{ opacity: 0, x: 40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="overflow-hidden rounded-[24px] md:rounded-[32px] shadow-2xl">
+          <motion.img
+            src={processImage}
+            alt="Global Export Process"
+            className="w-full h-[400px] sm:h-[540px] md:h-[640px] lg:h-[720px] object-cover"
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-[24px] md:rounded-[32px]" />
         </div>
-      </section>
+
+        {/* Bottom ISO badge */}
+        <motion.div
+          className="absolute bottom-4 md:bottom-8 left-4 md:left-8 right-4 md:right-8 rounded-2xl md:rounded-3xl bg-white/95 backdrop-blur-md p-4 md:p-6 shadow-xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="h-11 w-11 md:h-14 md:w-14 rounded-xl md:rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
+              <ShieldCheck className="h-5 w-5 md:h-7 md:w-7 text-white" />
+            </div>
+            <div>
+              <h4 className="font-bold text-base md:text-lg">ISO 9001:2015 Certified</h4>
+              <p className="text-xs md:text-sm text-muted-foreground">
+                International quality management standards followed at every stage.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Top-left: Countries */}
+        <motion.div
+          className="absolute -top-4 md:-top-6 -left-4 md:-left-6 bg-white rounded-2xl md:rounded-3xl shadow-xl p-4 md:p-5 border"
+          initial={{ opacity: 0, scale: 0.7 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, type: "spring", stiffness: 300 }}
+          whileHover={{ scale: 1.07 }}
+        >
+          <h4 className="text-2xl md:text-3xl font-bold text-primary">30+</h4>
+          <p className="text-xs md:text-sm text-muted-foreground">Countries Served</p>
+        </motion.div>
+
+        {/* Top-right: Quality */}
+        <motion.div
+          className="absolute top-6 md:top-10 -right-3 md:-right-6 bg-primary text-white rounded-2xl md:rounded-3xl shadow-xl p-4 md:p-5"
+          initial={{ opacity: 0, scale: 0.7 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, type: "spring", stiffness: 300 }}
+          whileHover={{ scale: 1.07 }}
+        >
+          <h4 className="text-2xl md:text-3xl font-bold">100%</h4>
+          <p className="text-xs md:text-sm opacity-90">Quality Checked</p>
+        </motion.div>
+
+        {/* Middle-right: Shipments */}
+        <motion.div
+          className="absolute bottom-32 md:bottom-40 -right-3 md:-right-6 bg-white rounded-2xl md:rounded-3xl shadow-xl p-4 md:p-5 border"
+          initial={{ opacity: 0, scale: 0.7 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7, type: "spring", stiffness: 300 }}
+          whileHover={{ scale: 1.07 }}
+        >
+          <h4 className="text-2xl md:text-3xl font-bold text-primary">50+</h4>
+          <p className="text-xs md:text-sm text-muted-foreground">Shipments Delivered</p>
+        </motion.div>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
+
 
       {/* Featured Categories */}
 <section className="py-20 bg-background">

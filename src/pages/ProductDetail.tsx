@@ -242,28 +242,28 @@ const ProductDetail = () => {
             {/* Quick info badges */}
             <motion.div className="flex flex-wrap gap-3 mt-5" variants={stagger} initial="hidden" animate="visible">
               {product.origin && (
-                <motion.div variants={fadeUp} custom={0} whileHover={{ scale: 1.05, borderColor: "var(--primary)" }} className="flex items-center gap-2 bg-background rounded-xl px-4 py-2.5 border border-border text-sm cursor-default transition-colors">
+                <motion.div  custom={0} whileHover={{ scale: 1.05, borderColor: "var(--primary)" }} className="flex items-center gap-2 bg-background rounded-xl px-4 py-2.5 border border-border text-sm cursor-default transition-colors">
                   <MapPin className="w-4 h-4 text-primary" />
                   <span className="text-muted-foreground">Origin:</span>
                   <span className="font-semibold text-foreground">{product.origin}</span>
                 </motion.div>
               )}
               {product.quality && (
-                <motion.div variants={fadeUp} custom={1} whileHover={{ scale: 1.05 }} className="flex items-center gap-2 bg-background rounded-xl px-4 py-2.5 border border-border text-sm cursor-default">
+                <motion.div  custom={1} whileHover={{ scale: 1.05 }} className="flex items-center gap-2 bg-background rounded-xl px-4 py-2.5 border border-border text-sm cursor-default">
                   <Star className="w-4 h-4 text-amber-500" />
                   <span className="text-muted-foreground">Quality:</span>
                   <span className="font-semibold text-foreground">{product.quality}</span>
                 </motion.div>
               )}
               {product.moisture && (
-                <motion.div variants={fadeUp} custom={2} whileHover={{ scale: 1.05 }} className="flex items-center gap-2 bg-background rounded-xl px-4 py-2.5 border border-border text-sm cursor-default">
+                <motion.div  custom={2} whileHover={{ scale: 1.05 }} className="flex items-center gap-2 bg-background rounded-xl px-4 py-2.5 border border-border text-sm cursor-default">
                   <Droplets className="w-4 h-4 text-blue-500" />
                   <span className="text-muted-foreground">Moisture:</span>
                   <span className="font-semibold text-foreground">{product.moisture}</span>
                 </motion.div>
               )}
               {product.packaging && (
-                <motion.div variants={fadeUp} custom={3} whileHover={{ scale: 1.05 }} className="flex items-center gap-2 bg-background rounded-xl px-4 py-2.5 border border-border text-sm cursor-default">
+                <motion.div  custom={3} whileHover={{ scale: 1.05 }} className="flex items-center gap-2 bg-background rounded-xl px-4 py-2.5 border border-border text-sm cursor-default">
                   <Box className="w-4 h-4 text-orange-500" />
                   <span className="text-muted-foreground">Packaging:</span>
                   <span className="font-semibold text-foreground">{product.packaging}</span>
@@ -660,7 +660,7 @@ const ProductDetail = () => {
                 <motion.div
                   key={v.name}
                   custom={i}
-                  variants={fadeUp}
+                 // variants={fadeUp}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
@@ -703,7 +703,7 @@ const ProductDetail = () => {
                     <motion.div
                       key={b.title}
                       custom={i}
-                      variants={fadeUp}
+                    //  variants={fadeUp}
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
@@ -748,7 +748,7 @@ const ProductDetail = () => {
                 <motion.div
                   key={item.title}
                   custom={i}
-                  variants={fadeUp}
+                  //variants={fadeUp}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
@@ -785,7 +785,7 @@ const ProductDetail = () => {
                 <motion.div
                   key={rp.slug}
                   custom={i}
-                  variants={fadeUp}
+                  //variants={fadeUp}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}

@@ -31,12 +31,17 @@ const fadeUp = {
 const About = () => (
   <div className="min-h-screen pt-16">
     {/* Hero */}
-    <div className="relative bg-secondary text-secondary-foreground py-20 overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-primary rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary rounded-full blur-3xl" />
-      </div>
-      <div className="container mx-auto px-4 relative z-10">
+<div className="relative bg-secondary text-secondary-foreground py-20 overflow-hidden">
+  <div className="absolute inset-0 opacity-5">
+    <div className="absolute top-10 left-10 w-72 h-72 bg-primary rounded-full blur-3xl" />
+    <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary rounded-full blur-3xl" />
+  </div>
+
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="grid md:grid-cols-2 gap-8 items-center">
+
+      {/* Left: original text — untouched */}
+      <div>
         <motion.p
           className="text-primary font-semibold uppercase tracking-widest text-sm mb-2"
           initial={{ opacity: 0 }}
@@ -61,72 +66,160 @@ const About = () => (
           Bringing India's finest agricultural products to international markets through quality, trust, and efficient export solutions.
         </motion.p>
       </div>
+
+      {/* Right: Ship animation — hidden on mobile, shown md+ */}
+      <motion.div
+        className="hidden md:flex items-end justify-center relative"
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+      >
+        <svg
+          viewBox="0 0 420 180"
+          className="w-full max-w-md"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Ocean waves */}
+          <motion.g
+            animate={{ x: [0, -30, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ellipse cx="60"  cy="160" rx="55" ry="9"  fill="#1e3a5f" opacity="0.5" />
+            <ellipse cx="180" cy="165" rx="70" ry="9"  fill="#1e3a5f" opacity="0.4" />
+            <ellipse cx="310" cy="160" rx="60" ry="9"  fill="#1e3a5f" opacity="0.5" />
+            <ellipse cx="410" cy="163" rx="40" ry="7"  fill="#1e3a5f" opacity="0.3" />
+          </motion.g>
+
+          {/* Water base */}
+          <rect x="0" y="155" width="420" height="25" fill="#0f2a47" opacity="0.7" rx="4" />
+
+          {/* Ship — bobs up and down */}
+          <motion.g
+            animate={{ y: [0, -4, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          >
+            {/* Hull */}
+            <path d="M55 140 L365 140 L345 158 L75 158 Z" fill="#2a4a7a" />
+            <path d="M75 158 L345 158 L335 165 L85 165 Z" fill="#1a3560" />
+
+            {/* Deck */}
+            <rect x="75" y="122" width="265" height="20" fill="#2e5490" rx="3" />
+
+            {/* Bridge / cabin */}
+            <rect x="232" y="90" width="78" height="34" fill="#3a6aaa" rx="4" />
+            <rect x="240" y="96" width="16" height="12" fill="#7ec8e3" rx="2" opacity="0.85" />
+            <rect x="262" y="96" width="16" height="12" fill="#7ec8e3" rx="2" opacity="0.85" />
+            <rect x="284" y="96" width="16" height="12" fill="#7ec8e3" rx="2" opacity="0.85" />
+
+            {/* Chimney */}
+            <rect x="270" y="72" width="14" height="20" fill="#2a4060" rx="3" />
+
+            {/* Smoke */}
+            <motion.g
+              animate={{ opacity: [0.6, 0, 0.6], y: [0, -16, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
+            >
+              <circle cx="277" cy="65" r="6"  fill="#888" opacity="0.3" />
+              <circle cx="283" cy="55" r="5"  fill="#999" opacity="0.2" />
+              <circle cx="272" cy="47" r="4"  fill="#aaa" opacity="0.15" />
+            </motion.g>
+
+            {/* Cargo containers row 1 */}
+            <rect x="82"  y="105" width="40" height="18" fill="#e05252" rx="2" />
+            <rect x="126" y="105" width="40" height="18" fill="#f0a500" rx="2" />
+            <rect x="170" y="105" width="40" height="18" fill="#3aaa5a" rx="2" />
+
+            {/* Cargo containers row 2 */}
+            <rect x="82"  y="88"  width="40" height="18" fill="#3aaa5a" rx="2" />
+            <rect x="126" y="88"  width="40" height="18" fill="#e05252" rx="2" />
+            <rect x="170" y="88"  width="40" height="18" fill="#f0a500" rx="2" />
+
+            {/* Container dividers */}
+            {[82, 126, 170].map((x) => (
+              <g key={x}>
+                <line x1={x+13} y1="105" x2={x+13} y2="123" stroke="rgba(0,0,0,0.15)" strokeWidth="1" />
+                <line x1={x+26} y1="105" x2={x+26} y2="123" stroke="rgba(0,0,0,0.15)" strokeWidth="1" />
+                <line x1={x+13} y1="88"  x2={x+13} y2="106" stroke="rgba(0,0,0,0.15)" strokeWidth="1" />
+                <line x1={x+26} y1="88"  x2={x+26} y2="106" stroke="rgba(0,0,0,0.15)" strokeWidth="1" />
+              </g>
+            ))}
+
+            {/* Crane */}
+            <line x1="116" y1="122" x2="116" y2="60" stroke="#4a7abf" strokeWidth="3" strokeLinecap="round" />
+            <line x1="116" y1="60"  x2="186" y2="60" stroke="#4a7abf" strokeWidth="2" strokeLinecap="round" />
+            <motion.g
+              animate={{ y: [0, 16, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <line x1="166" y1="60" x2="166" y2="72" stroke="#4a7abf" strokeWidth="1.5" strokeDasharray="3 2" />
+              <rect x="156" y="72" width="20" height="11" fill="#f0a500" rx="2" />
+            </motion.g>
+
+            {/* Flag */}
+            <line x1="355" y1="122" x2="355" y2="98" stroke="#ccc" strokeWidth="1.5" />
+            <motion.polygon
+              points="355,98 374,104 355,110"
+              fill="#3B6D11"
+              animate={{ skewX: [-5, 5, -5] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.g>
+
+          {/* Distant small ship drifting right to left */}
+          <motion.g
+            animate={{ x: [420, -80] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+            opacity="0.2"
+          >
+            <path d="M10 150 L80 150 L73 157 L17 157 Z" fill="#2a4a7a" />
+            <rect x="28" y="140" width="44" height="12" fill="#3a6aaa" rx="2" />
+            <rect x="46" y="131" width="16" height="10" fill="#3a6aaa" rx="2" />
+          </motion.g>
+        </svg>
+
+        {/* Floating badge: Export Ready */}
+        <motion.div
+          className="absolute top-0 right-2 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"
+          animate={{ y: [0, -5, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          🚢 Export Ready
+        </motion.div>
+
+        {/* Floating badge: Live Tracking */}
+        <motion.div
+          className="absolute bottom-4 left-0 bg-white/10 border border-white/20 backdrop-blur-sm text-secondary-foreground/80 text-xs font-semibold px-3 py-1.5 rounded-full shadow"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        >
+          📦 Live Tracking
+        </motion.div>
+      </motion.div>
+
     </div>
-
-    {/* Stats Bar */}
-   {/* Counters */}
-{/* <section className="py-10 bg-background border-y border-border">
-  <div className="container mx-auto px-4"> */}
-
-    {/* Pill strip */}
-    {/* <div className="flex items-center justify-between bg-green-50 rounded-full px-10 py-5"> */}
-
-      {/* 1 */}
-      {/* <div className="text-center">
-        <p className="text-2xl md:text-3xl font-bold text-green-900 leading-none">
-          <AnimatedCounter end={2} suffix="+" />
-        </p>
-        <p className="text-xs text-green-700 uppercase tracking-widest mt-1.5">
-          Years Experience
-        </p>
-      </div> */}
-
-      {/* Divider */}
-      {/* <div className="w-px h-8 bg-green-300 shrink-0" /> */}
-
-      {/* 2 */}
-      {/* <div className="text-center">
-        <p className="text-2xl md:text-3xl font-bold text-green-900 leading-none">
-          <AnimatedCounter end={30} suffix="+" />
-        </p>
-        <p className="text-xs text-green-700 uppercase tracking-widest mt-1.5">
-          Export Countries
-        </p>
-      </div> */}
-
-      {/* Divider */}
-      {/* <div className="w-px h-8 bg-green-300 shrink-0" /> */}
-
-      {/* 3 */}
-      {/* <div className="text-center">
-        <p className="text-2xl md:text-3xl font-bold text-green-900 leading-none">
-          <AnimatedCounter end={170} suffix="+" />
-        </p>
-        <p className="text-xs text-green-700 uppercase tracking-widest mt-1.5">
-          Happy Clients
-        </p>
-      </div> */}
-
-      {/* Divider */}
-      {/* <div className="w-px h-8 bg-green-300 shrink-0" /> */}
-
-      {/* 4 */}
-      {/* <div className="text-center">
-        <p className="text-2xl md:text-3xl font-bold text-green-900 leading-none">
-          <AnimatedCounter end={1000} suffix="MT+" />
-        </p>
-        <p className="text-xs text-green-700 uppercase tracking-widest mt-1.5">
-          Annual Export
-        </p>
-      </div>
-
-    </div> */}
-{/* 
   </div>
-</section> */}
 
-    {/* Our Story */}
-    <section className="py-20 bg-background">
+  {/* Animated wave divider — overlaps into Our Story */}
+  <div className="absolute bottom-0 left-0 right-0 overflow-hidden" style={{ height: "56px" }}>
+    <svg viewBox="0 0 1440 56" preserveAspectRatio="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <motion.path
+        fill="hsl(var(--background))"
+        animate={{
+          d: [
+            "M0,28 C360,56 720,0 1080,28 C1260,42 1380,14 1440,28 L1440,56 L0,56 Z",
+            "M0,38 C360,10 720,52 1080,22 C1260,8  1380,48 1440,18 L1440,56 L0,56 Z",
+            "M0,28 C360,56 720,0 1080,28 C1260,42 1380,14 1440,28 L1440,56 L0,56 Z",
+          ],
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </svg>
+  </div>
+</div>
+
+
+{/* Our Story */}
+<section className="py-20 bg-background">
   <div className="container mx-auto px-4">
 
     {/* Top: quote bar left + stat bars right */}
@@ -148,11 +241,9 @@ const About = () => (
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
           Founded in 2024, HexxonGlobal was created with a vision to bring India's finest agricultural products to customers worldwide. We focus on quality sourcing, efficient logistics, and long-term partnerships.
-
         </p>
         <p className="text-muted-foreground leading-relaxed">
           By partnering with experienced producers and processing facilities, we ensure every product meets international quality standards before reaching global markets.
-          
         </p>
       </motion.div>
 
@@ -165,10 +256,10 @@ const About = () => (
         className="flex flex-col justify-center gap-7"
       >
         {[
-          { num: "2+", label: "Years Experience", pct: "45%" },
-          { num: "30+", label: "Export Countries", pct: "75%" },
-          { num: "170+", label: "Happy Clients", pct: "60%" },
-          { num: "1000MT+", label: "Annual Export", pct: "90%" },
+          { num: "2+",      label: "Years Experience", pct: "45%" },
+          { num: "30+",     label: "Export Countries",  pct: "75%" },
+          { num: "170+",    label: "Happy Clients",     pct: "60%" },
+          { num: "1000MT+", label: "Annual Export",     pct: "90%" },
         ].map((stat, i) => (
           <motion.div
             key={stat.label}
@@ -254,6 +345,7 @@ const About = () => (
 
   </div>
 </section>
+
     {/* Founder Section */}
     {/* <section className="py-20 bg-muted">
       <div className="container mx-auto px-4">

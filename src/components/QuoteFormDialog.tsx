@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,14 +14,19 @@ interface QuoteFormDialogProps {
 
 const QuoteFormDialog = ({ open, onClose, productName }: QuoteFormDialogProps) => {
   const [form, setForm] = useState({
-
     name: "",
     phone: "",
     email: "",
     product: productName || "",
     message: "",
   });
-  const clientNumber = "918128542365"; // 👉 replace with your client's WhatsApp number
+
+  // Sync product field whenever productName prop changes
+  useEffect(() => {
+    setForm((prev) => ({ ...prev, product: productName || "" }));
+  }, [productName]);
+
+  const clientNumber = "918128542365";
 
   const whatsappMessage = `📦 *New Inquiry*
 
@@ -33,7 +38,7 @@ const QuoteFormDialog = ({ open, onClose, productName }: QuoteFormDialogProps) =
 📝 Message:
 ${form.message}`;
 
-  const whatsappUrl = `https://wa.me/${clientNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/${+918128542365}?text=${encodeURIComponent(whatsappMessage)}`;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,17 +48,14 @@ ${form.message}`;
       return;
     }
 
-    // Open WhatsApp
     window.open(whatsappUrl, "_blank");
-
     toast.success("Redirecting to WhatsApp...");
 
-    // Reset form
     setForm({
       name: "",
       phone: "",
       email: "",
-      product: "",
+      product: productName || "",
       message: "",
     });
 
