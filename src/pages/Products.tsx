@@ -5,6 +5,7 @@ import { Carrot, Apple, Flame, Wheat, CircleDot, Grip, Droplets, ChevronRight } 
 import { categories } from "@/data/products";
 import QuoteFormDialog from "@/components/QuoteFormDialog";
 import { Button } from "@/components/ui/button";
+import { useSearchParams } from "react-router-dom";
 
 const iconMap: Record<string, React.ElementType> = {
   Carrot, Apple, Flame, Wheat, CircleDot, Grip, Droplets,
@@ -15,12 +16,17 @@ const Products = () => {
   const [activeId, setActiveId] = useState(() => categoryId && categories.some((c) => c.id === categoryId) ? categoryId : categories[0].id);
   const [quoteOpen, setQuoteOpen] = useState(false);
   const active = categories.find((c) => c.id === activeId)!;
+  const [searchParams] = useSearchParams();
+const categoryFromUrl = searchParams.get("category");
 
-  useEffect(() => {
-    if (categoryId && categories.some((c) => c.id === categoryId)) {
-      setActiveId(categoryId);
-    }
-  }, [categoryId]);
+useEffect(() => {
+  if (
+    categoryFromUrl &&
+    categories.some((c) => c.id === categoryFromUrl)
+  ) {
+    setActiveId(categoryFromUrl);
+  }
+}, [categoryFromUrl]);
 
   return (
     <div className="min-h-screen pt-16 bg-muted">
@@ -77,83 +83,7 @@ const Products = () => {
           className="w-full max-w-md ml-auto"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Conveyor belt base */}
-          {/* <rect x="10" y="82" width="420" height="12" fill="#1e3a1e" rx="6" opacity="0.6" /> */}
-          {/* Belt lines moving */}
-          {/* <motion.g
-            animate={{ x: [0, -40] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-          >
-            {[0, 40, 80, 120, 160, 200, 240, 280, 320, 360, 400, 440].map((x) => (
-              <rect key={x} x={x + 4} y="84" width="28" height="8" fill="#2a5a2a" rx="2" opacity="0.5" />
-            ))}
-          </motion.g> */}
-
-          {/* Crate 1 — Vegetables */}
-          {/* <motion.g
-            animate={{ x: [360, -80] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 0 }}
-          >
-            <rect x="0" y="60" width="52" height="24" fill="#5a3a1a" rx="4" />
-            <line x1="0"  y1="72" x2="52" y2="72" stroke="#7a5a3a" strokeWidth="1" />
-            <line x1="17" y1="60" x2="17" y2="84" stroke="#7a5a3a" strokeWidth="1" />
-            <line x1="35" y1="60" x2="35" y2="84" stroke="#7a5a3a" strokeWidth="1" />
-            <text x="26" y="75" textAnchor="middle" fontSize="11" fill="#d4a96a">🥦</text>
-          </motion.g> */}
-
-          {/* Crate 2 — Fruits (offset) */}
-          {/* <motion.g
-            animate={{ x: [500, -80] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "linear", delay: 2.3 }}
-          >
-            <rect x="0" y="60" width="52" height="24" fill="#5a3a1a" rx="4" />
-            <line x1="0"  y1="72" x2="52" y2="72" stroke="#7a5a3a" strokeWidth="1" />
-            <line x1="17" y1="60" x2="17" y2="84" stroke="#7a5a3a" strokeWidth="1" />
-            <line x1="35" y1="60" x2="35" y2="84" stroke="#7a5a3a" strokeWidth="1" />
-            <text x="26" y="75" textAnchor="middle" fontSize="11" fill="#d4a96a">🌶️</text>
-          </motion.g> */}
-
-          {/* Crate 3 — Grains */}
-          {/* <motion.g
-            animate={{ x: [640, -80] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "linear", delay: 4.6 }}
-          >
-            <rect x="0" y="60" width="52" height="24" fill="#5a3a1a" rx="4" />
-            <line x1="0"  y1="72" x2="52" y2="72" stroke="#7a5a3a" strokeWidth="1" />
-            <line x1="17" y1="60" x2="17" y2="84" stroke="#7a5a3a" strokeWidth="1" />
-            <line x1="35" y1="60" x2="35" y2="84" stroke="#7a5a3a" strokeWidth="1" />
-            <text x="26" y="75" textAnchor="middle" fontSize="11" fill="#d4a96a">🌾</text>
-          </motion.g> */}
-
-          {/* Floating produce items above belt */}
-          {/* {[
-            { emoji: "🍅", x: 60,  delay: 0,    dur: 2.2 },
-            { emoji: "🧅", x: 130, delay: 0.4,  dur: 2.6 },
-            { emoji: "🥕", x: 200, delay: 0.8,  dur: 2.0 },
-            { emoji: "🌿", x: 270, delay: 0.3,  dur: 2.8 },
-            { emoji: "🍋", x: 340, delay: 0.6,  dur: 2.4 },
-            { emoji: "🫚", x: 400, delay: 1.0,  dur: 2.1 },
-          ].map((item) => (
-            <motion.text
-              key={item.x}
-              x={item.x}
-              y="46"
-              textAnchor="middle"
-              fontSize="20"
-              animate={{ y: [46, 38, 46] }}
-              transition={{ duration: item.dur, repeat: Infinity, ease: "easeInOut", delay: item.delay }}
-            >
-              {item.emoji}
-            </motion.text>
-          ))} */}
-
-          {/* Certified badge on right */}
-          {/* <rect x="350" y="4" width="82" height="24" fill="#3B6D11" rx="12" opacity="0.9" />
-          <text x="391" y="20" textAnchor="middle" fontSize="10" fill="white" fontWeight="600">✅ Certified</text> */}
-
-          {/* Export tag on left */}
-          {/* <rect x="8" y="4" width="76" height="24" fill="white" fillOpacity="0.1" rx="12" />
-          <text x="46" y="20" textAnchor="middle" fontSize="10" fill="white" fontWeight="600">🚢 Export</text> */}
+         
         </svg>
       </motion.div>
 
@@ -271,8 +201,10 @@ const Products = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.05 }}
                     >
-                      <Link
-                        to={`/products/${active.id}/${product.slug}`}
+                     <Link
+  to={`/products/${active.id}/${product.slug}`}
+  state={{ selectedCategory: active.id }}
+
                         className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-background border border-border hover:shadow-md hover:border-primary/30 transition-all group"
                       >
                         <span className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />

@@ -77,7 +77,7 @@ import chickpeas from "@/assets/productimage/chickpeas-kabuli.webp";
 import greenMung from "@/assets/productimage/green-mung-beans.webp";
 import redLentils from "@/assets/productimage/red-lentils-masoor.webp";
 import yellowLentils from "@/assets/productimage/yellow-lentils-toor.webp";
-import millet from "@/assets/productimage/millet-bajra.webp";
+import millet from "@/assets/productimage/splitbengalgram.webp";
 
 
 import groundnutOil from "@/assets/productimage/groundnut-oil.webp";
@@ -567,7 +567,7 @@ export const categories: ProductCategory[] = [
       { name: "Green Mung Beans", slug: "green-mung", image: greenMung, origin: "Rajasthan, India", quality: "Machine Clean" },
       { name: "Red Lentils (Masoor)", slug: "red-lentils", image: redLentils, origin: "Madhya Pradesh, India", quality: "Football / Split" },
       { name: "Yellow Lentils (Toor)", slug: "toor-dal", image: yellowLentils, origin: "Maharashtra, India", quality: "Polished / Oily" },
-      { name: "Millet (Bajra)", slug: "bajra-millet", image: millet, origin: "Rajasthan, India", quality: "Sortex Clean" },
+      { name: "Split Bengal Gram", slug: "bajra-millet", image: millet, origin: "Rajasthan, India", quality: "Sortex Clean" },
     ],
   },
   {
@@ -591,6 +591,8 @@ export const getProduct = (categoryId: string, slug: string) => {
   const cat = getCategory(categoryId);
   return cat?.products.find((p) => p.slug === slug);
 };
+
+
 
 
 

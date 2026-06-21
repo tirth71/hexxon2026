@@ -17,6 +17,7 @@ import my from "@/assets/flags/my.svg";
 import sg from "@/assets/flags/sg.svg";
 import qa from "@/assets/flags/qa.svg";
 import om from "@/assets/flags/om.svg";
+import { useLocation } from "react-router-dom";
 
 const flagMap: Record<string, string> = {
   "UAE": ae, "United Arab Emirates": ae,
@@ -41,6 +42,7 @@ const stagger = { visible: { transition: { staggerChildren: 0.08 } } };
 const getProductContent = (productName: string, categoryName: string) => {
   const name = productName;
   const cat = categoryName;
+  
   return {
     description: `At HexxonGlobal, we offer premium quality ${name} sourced directly from India's finest farms and certified agricultural regions. Our ${name} is known for its exceptional freshness, superior grade, and consistent quality that meets international food safety standards. Whether you're a bulk importer, food distributor, or retail buyer, our ${name} guarantees a superior product experience every time.`,
     whyChoose: [
@@ -120,7 +122,7 @@ const ProductDetail = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
+const location = useLocation();
   const category = getCategory(categoryId || "");
   const product = getProduct(categoryId || "", productSlug || "");
 
@@ -137,7 +139,14 @@ const ProductDetail = () => {
       <div className="min-h-screen pt-24 flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-foreground">Product Not Found</h2>
-          <Link to="/products" className="text-primary mt-4 inline-block">← Back to Products</Link>
+         <Link
+  to="/products"
+  state={{
+    selectedCategory: location.state?.selectedCategory
+  }}
+>
+  Back to Products
+</Link>
         </div>
       </div>
     );
@@ -167,12 +176,13 @@ const ProductDetail = () => {
       <div className="container mx-auto px-4 py-10">
 
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
-          <Link to="/products" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8 group">
-            <motion.span whileHover={{ x: -4 }} transition={{ type: "spring", stiffness: 400 }}>
-              <ArrowLeft className="w-4 h-4" />
-            </motion.span>
-            Back to Products
-          </Link>
+        <Link
+  to={`/products?category=${categoryId}`}
+  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8 group"
+>
+  <ArrowLeft className="w-4 h-4" />
+  Back to Products
+</Link>
         </motion.div>
 
         {/* ── Top Grid ── */}
