@@ -620,7 +620,7 @@ const About = () => (
               name: "FSSAI",
               desc: "Food Safety and Standards Authority of India",
             },
-            { name: "ISO 22000", desc: "Food Safety Management Systems" },
+            { name: "MSME", desc: "Micro, Small & Medium Enterprise" },
             {
               name: "GlobalGAP",
               desc: "Good Agricultural Practices Certification",
